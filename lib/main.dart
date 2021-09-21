@@ -7,33 +7,64 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'My App', home: MyScaffold());
+    return MaterialApp(title: 'My App', home: HomePage());
   }
 }
 
-class MyScaffold extends StatefulWidget {
-  const MyScaffold({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  _MyScaffoldState createState() => _MyScaffoldState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _MyScaffoldState extends State<MyScaffold> {
-  int _count = 0;
+class _HomePageState extends State<HomePage> {
   @override
+  int _count = 0;
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.amber),
+              child: Text('Drawer header'),
+            ),
+            ListTile(
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {},
+              ),
+            ),
+            ListTile(
+              leading: IconButton(
+                icon: Icon(Icons.home),
+                onPressed: () {},
+              ),
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
-        title: Text('My Scaffold appbar'),
+        title: Text('Home Appbar'),
+        centerTitle: true,
+        backgroundColor: Colors.amberAccent,
       ),
       body: Center(
-        child: Text('You have pushed the button $_count times'),
+        child: Text('You pressed your buttons $_count times'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
           _count++;
         }),
+        child: Icon(
+          Icons.add_reaction_sharp,
+          color: Colors.amberAccent,
+        ),
+        backgroundColor: Colors.cyan,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }
