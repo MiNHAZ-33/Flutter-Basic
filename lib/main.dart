@@ -24,31 +24,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
+          child: Material(
+        color: Colors.blueAccent,
         child: ListView(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Text('Drawer header'),
-            ),
-            ListTile(
-              leading: IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-              ),
-            ),
-            ListTile(
-              leading: IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {},
-              ),
-            )
+            buildMenuItem(text: 'Home', icon: Icons.home),
+            buildMenuItem(
+                text: 'Notification', icon: Icons.notifications_active_rounded),
+            buildMenuItem(text: 'Settings', icon: Icons.settings),
           ],
         ),
-      ),
+      )),
       appBar: AppBar(
         title: Text('Home Appbar'),
         centerTitle: true,
-        backgroundColor: Colors.amberAccent,
+        backgroundColor: Colors.cyanAccent,
       ),
       body: Center(
         child: Text('You pressed your buttons $_count times'),
@@ -67,4 +57,18 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
+}
+
+Widget buildMenuItem({required String text, required IconData icon}) {
+  final color = Colors.white;
+  final hovercolor = Colors.white;
+
+  return ListTile(
+    leading: Icon(
+      icon,
+      color: color,
+    ),
+    title: Text(text, style: TextStyle(color: color)),
+    onTap: () {},
+  );
 }
