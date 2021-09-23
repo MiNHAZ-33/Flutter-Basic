@@ -25,9 +25,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(
           child: Material(
-        color: Colors.blueAccent,
+        color: Colors.red,
         child: ListView(
-          children: [
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+                accountName: Text('Minhaz'),
+                accountEmail: Text('minhaz@outlook.com'),
+                //currentAccountPicture: NetworkImage('assets\img\1.jpg'),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.greenAccent,
+                  backgroundImage: AssetImage('assets/img/1.jpg'),
+                )),
             buildMenuItem(text: 'Home', icon: Icons.home),
             buildMenuItem(
                 text: 'Notification', icon: Icons.notifications_active_rounded),
@@ -60,15 +69,14 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget buildMenuItem({required String text, required IconData icon}) {
-  final color = Colors.white;
-  final hovercolor = Colors.white;
+  final color = Colors.black;
+  final hovercolor = Colors.black;
 
   return ListTile(
-    leading: Icon(
-      icon,
-      color: color,
-    ),
-    title: Text(text, style: TextStyle(color: color)),
-    onTap: () {},
-  );
+      leading: Icon(
+        icon,
+        color: color,
+      ),
+      title: Text(text, style: TextStyle(color: color)),
+      onTap: () {});
 }
