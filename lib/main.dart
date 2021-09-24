@@ -25,11 +25,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(
           child: Material(
-        color: Colors.red,
+        color: Colors.blueAccent,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
                 accountName: Text('Minhaz'),
                 accountEmail: Text('minhaz@outlook.com'),
                 //currentAccountPicture: NetworkImage('assets\img\1.jpg'),
@@ -45,31 +45,33 @@ class _HomePageState extends State<HomePage> {
         ),
       )),
       appBar: AppBar(
-        title: Text('Home Appbar'),
+        title: const Text('Home Appbar'),
         centerTitle: true,
-        backgroundColor: Colors.cyanAccent,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Center(
-        child: Text('You pressed your buttons $_count times'),
-      ),
+          //child: Text('You pressed your buttons $_count times'),
+          child: Image(
+        image: AssetImage('assets/img/2.jpg'),
+      )),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
           _count++;
         }),
-        child: Icon(
-          Icons.add_reaction_sharp,
-          color: Colors.amberAccent,
+        child: const Icon(
+          Icons.add_ic_call,
+          color: Colors.white,
         ),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.blueAccent,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }
 
 Widget buildMenuItem({required String text, required IconData icon}) {
-  final color = Colors.black;
+  final color = Colors.white;
   final hovercolor = Colors.black;
 
   return ListTile(
