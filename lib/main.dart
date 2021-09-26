@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:ui';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 void main() => runApp(MyApp());
 
@@ -50,10 +53,74 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.blueAccent,
       ),
       body: Center(
-          //child: Text('You pressed your buttons $_count times'),
-          child: Image(
-        image: AssetImage('assets/img/2.jpg'),
-      )),
+        child: Column(
+          children: [
+            const Text(
+              'I am Text Widget with some styling!',
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.deepPurpleAccent,
+                //backgroundColor: Colors.green,
+                letterSpacing: 10,
+                wordSpacing: 10,
+                shadows: [
+                  Shadow(
+                      color: Colors.purpleAccent,
+                      offset: Offset(30, 30),
+                      blurRadius: 10),
+                ],
+              ),
+            ),
+            RichText(
+              text: const TextSpan(
+                text: 'I am a rich text !',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  letterSpacing: 10,
+                  wordSpacing: 10,
+                  shadows: [
+                    Shadow(
+                      color: Colors.lime,
+                      offset: Offset(20, 30),
+                      blurRadius: 10,
+                    ),
+                  ],
+                ),
+                children: [
+                  TextSpan(
+                    text: 'Click Me!',
+                    style: TextStyle(color: Colors.redAccent, fontSize: 30),
+                  ),
+                ],
+              ),
+            ),
+            DefaultTextStyle(
+              style: TextStyle(fontSize: 50, color: Colors.pinkAccent),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  FadeAnimatedText('I am fading'),
+                  FlickerAnimatedText('Look I am flickering'),
+                  ScaleAnimatedText('I am scaling'),
+                  TyperAnimatedText('I am a typer'),
+                  WavyAnimatedText('I am waving')
+                ],
+                isRepeatingAnimation: true,
+                repeatForever: true,
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.call), label: 'Call'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.exit_to_app), label: 'Exit'),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => setState(() {
           _count++;
